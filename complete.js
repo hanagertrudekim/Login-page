@@ -1,17 +1,13 @@
 const hello = document.getElementById("hello");
+const logoutButton = document.getElementById("logout");
 const name = Cookies.get("username");
 hello.innerText = `안녕하세요. ${name}님!`;
 
-const logoutButton = document.getElementById("logout");
-
-const clickLogout = () => {
+logoutButton.onclick = function () {
   localStorage.clear();
   sessionStorage.clear();
   Cookies.remove("ID");
-  Cookies.remove("flag");
-  document.getElementById("logout").onclick = function () {
-    document.location.herf = "index.html";
-  };
+  Cookies.remove("username");
+  Cookies.remove("loginflag");
+  window.location.replace("index.html");
 };
-
-logoutButton.addEventListener("click", clickLogout);

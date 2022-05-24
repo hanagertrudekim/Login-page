@@ -3,13 +3,11 @@ const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
 
 let errNum = 0;
-let idKey = 1;
 
 const saveId = () => {
-  localStorage.setItem("ID" + idKey, idInput.value);
-  sessionStorage.setItem("ID" + idKey, idInput.value);
-  Cookies.set("ID" + idKey, idInput.value, { expires: 3 });
-  idKey++;
+  localStorage.setItem("ID", idInput.value);
+  sessionStorage.setItem("ID", idInput.value);
+  Cookies.set("ID", idInput.value, { expires: 3 });
 };
 
 const clickLogin = (e) => {
@@ -19,6 +17,7 @@ const clickLogin = (e) => {
       alert("로그인이 되었어요!");
       Cookies.set("loginFlag", "login");
       Cookies.set("username", idInput.value);
+      window.location.replace("complete.html");
     } else {
       alert("아이디와 비밀번호가 일치하지 않습니다.");
       errNum++;
