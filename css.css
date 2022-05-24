@@ -28,7 +28,8 @@ body {
   color: white;
 }
 #logout {
-  width: 100%;
+  width: 90%;
+  height: 2rem;
   background-color: skyblue;
   border-color: transparent;
   color: white;
@@ -44,4 +45,13 @@ body {
 
 #alert {
   border-color: transparent;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+#complete {
+  color: blue;
 }
