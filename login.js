@@ -1,6 +1,7 @@
 const idInput = document.getElementById("id");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
+document.Cookies = "domain = hanagertrudekim.github.io";
 
 let errNum = 0;
 
@@ -15,8 +16,7 @@ const clickLogin = (e) => {
   if (idInput.value == "hana") {
     if (passwordInput.value == "0000") {
       alert("로그인이 되었어요!");
-      Cookies.set("loginFlag", "login");
-      Cookies.set("username", idInput.value);
+      localStorage.setItem("loginFlag", "logincheck");
       window.location.replace("complete.html");
     } else {
       alert("아이디와 비밀번호가 일치하지 않습니다.");
