@@ -23,7 +23,7 @@ const clickLogin = (e) => {
       errNum++;
     }
   } else {
-    alert("존재하지 않는 계정입니다");
+    alert("아이디와 비민번호를 다시 입력해주세요.");
     errNum++;
   }
   if (errNum == 5) {
