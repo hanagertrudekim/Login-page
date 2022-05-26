@@ -1,14 +1,17 @@
 const idInput = document.getElementById("id");
 const passwordInput = document.getElementById("password");
 const loginButton = document.getElementById("login");
-document.Cookies = "domain = hanagertrudekim.github.io";
 
 let errNum = 0;
+if (Cookies.get("errNum") !== undefined) {
+  errNum = Cookies.get("errNum");
+}
 
 const saveId = () => {
   localStorage.setItem("ID", idInput.value);
   sessionStorage.setItem("ID", idInput.value);
   Cookies.set("ID", idInput.value, { expires: 3 });
+  Cookies.set("errNum", errNum);
 };
 
 const clickLogin = (e) => {
@@ -23,23 +26,28 @@ const clickLogin = (e) => {
       errNum++;
     }
   } else {
-    alert("아이디와 비민번호를 다시 입력해주세요.");
+    alert("아이디와 비밀번호를 다시 입력해주세요.");
     errNum++;
   }
-  if (errNum == 5) {
+  if (errNum >= 5) {
     Cookies.set("flag", "no", { expires: 0.046 });
-  }
-  if (Cookies.get("flag") == "no") {
     idInput.addEventListener("keydown", clickStopLogin);
     passwordInput.addEventListener("keydown", clickStopLogin);
   }
+
   saveId();
   idInput.value = "";
   passwordInput.value = "";
 };
 
-const clickStopLogin = () => {
+const clickStopLogin = (e) => {
+  e.preventDefault();
   alert("1시간 뒤에 다시 시도해주세요.");
 };
+
+if (Cookies.get("flag") == "no") {
+  idInput.addEventListener("keydown", clickStopLogin);
+  passwordInput.addEventListener("keydown", clickStopLogin);
+}
 
 loginButton.addEventListener("click", clickLogin);
