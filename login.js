@@ -20,6 +20,7 @@ const clickLogin = (e) => {
     if (passwordInput.value == "0000") {
       alert("로그인이 되었어요!");
       localStorage.setItem("loginFlag", "true");
+      errNum = 0;
       window.location.replace("complete.html");
     } else {
       alert("아이디와 비밀번호가 일치하지 않습니다.");
